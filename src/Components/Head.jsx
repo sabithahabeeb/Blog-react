@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 function Head() {
   return (
     <>
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar  expand="lg" className="bg-body-tertiary  ">
       <Container fluid>
       <img
               alt=""
