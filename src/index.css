@@ -1,13 +1,57 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
 }
+.container{
+  width: 100%;
+  height: 100vh;
+  background-image: url('https://images.unsplash.com/photo-1560258018-c7db7645254e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjE4MjY3M30');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+ 
+}
+.container img{
+  width: 100%;
+  height: 100vh;
+
+ 
+}
+.buttons{
+  position: absolute;
+  top:30%;
+  left: 70%;
+  transform: translate(-50%,-50%);
+}
+.buttons h1{
+ font-size: 10rem;
+ color: rgb(37, 61, 9);
+ font-family: 'Kaushan Script', cursive;
+}
+.auth{
+  width: 100%;
+  height: 100vh;
+  background-image:linear-gradient(45deg, rgba(237, 235, 230, 0.7),rgba(177, 170, 172, 0.7)), url('https://img.freepik.com/premium-photo/top-view-wood-office-desk-table-flat-lay-workspace_35380-2710.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.auth h5{
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+.auth button{
+  margin-left: 100px;
+  font-weight: bolder;
+}
+.auth button:hover{
+background: rgb(187, 134, 134);
+}
+/* https://images.unsplash.com/photo-1560258018-c7db7645254e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjE4MjY3M30 */
