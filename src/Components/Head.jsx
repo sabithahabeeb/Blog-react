@@ -5,9 +5,16 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Head() {
+  const navigateURL = useNavigate()
+  const navigate = ()=>{
+    navigateURL('/myaccount')
+  }
+  const navigatewrite = ()=>{
+    navigateURL('/write')
+  }
   return (
     <>
         <Navbar  expand="lg" className="bg-body-tertiary  ">
@@ -26,25 +33,28 @@ function Head() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">HOME</Nav.Link>
-            <Nav.Link href="#action2">ABOUT</Nav.Link>
+            <Nav.Link href="/">HOME</Nav.Link>
+            <Nav.Link  href="/write">ABOUT</Nav.Link>
             
             <Nav.Link href="#" >
             CONTACT
             </Nav.Link>
-            <Nav.Link href="#action2">WRITE</Nav.Link>
+            <Nav.Link onClick={navigatewrite} href="">WRITE</Nav.Link>
 
           </Nav>
-          <Nav.Link href="#action2" style={{margin:'20px'}}>REGISTER</Nav.Link>
+         <div onClick={navigate} className='d-flex flex-row justify-content-center'>
+            <img
+                alt=""
+                src="https://cdn.icon-icons.com/icons2/1571/PNG/512/483490-blogger-google-logo-media-network-social_107708.png"
+                width="40"
+                height="40"
+                className="d-inline-block align-top"
+              />{' '}
+            <Nav.Link href="#action2" style={{margin:'20px'}}>NAME</Nav.Link>
+         </div>
 
           <Nav.Link href="#action2">LOGOUT</Nav.Link>
-          <img
-              alt=""
-              src="https://cdn.icon-icons.com/icons2/1571/PNG/512/483490-blogger-google-logo-media-network-social_107708.png"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />{' '}
+          
 
         </Navbar.Collapse>
       </Container>
