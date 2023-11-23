@@ -7,7 +7,7 @@ import MyAccount from './Pages/MyAccount';
 import Footer from './Components/Footer';
 import Auth from './Components/Auth';
 import DetailsBlog from './Pages/DetailsBlog';
-import Write from './Pages/Write';
+import Write from './Components/Write';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route path='/register' element={<Auth register />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/myaccount' element={<MyAccount />} />
-        <Route path='/blogdetails' element={<DetailsBlog/>} />
+        <Route path='/blogdetails/id' element={<DetailsBlog/>} />
         <Route path='/write' element={<Write/>} />
 
            </Routes>

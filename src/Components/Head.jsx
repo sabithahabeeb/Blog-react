@@ -12,9 +12,7 @@ function Head() {
   const navigate = ()=>{
     navigateURL('/myaccount')
   }
-  const navigatewrite = ()=>{
-    navigateURL('/write')
-  }
+ 
   return (
     <>
         <Navbar  expand="lg" className="bg-body-tertiary  ">
@@ -34,12 +32,12 @@ function Head() {
             navbarScroll
           >
             <Nav.Link href="/">HOME</Nav.Link>
-            <Nav.Link  href="/write">ABOUT</Nav.Link>
+            {/* <Nav.Link  href="/write">ABOUT</Nav.Link>
             
             <Nav.Link href="#" >
             CONTACT
             </Nav.Link>
-            <Nav.Link onClick={navigatewrite} href="">WRITE</Nav.Link>
+            <Nav.Link  href="">WRITE</Nav.Link> */}
 
           </Nav>
          <div onClick={navigate} className='d-flex flex-row justify-content-center'>
