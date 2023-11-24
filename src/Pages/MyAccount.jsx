@@ -5,8 +5,6 @@ import TextField from '@mui/material/TextField';
 import Form from 'react-bootstrap/Form';
 import Write from '../Components/Write';
 import { useNavigate } from 'react-router-dom';
-import BlogCard from '../Components/BlogCard';
-import MyBLogs from '../Components/MyBLogs';
 
 function MyAccount() {
   const navigateURL = useNavigate()
@@ -111,22 +109,3 @@ function MyAccount() {
 
 export default MyAccount
 
- {/* <div style={{ width: '450px', height: '3px', backgroundColor: 'black' }}></div>
-          <h2 className='text-center mt-3 ms-5 fw-bold'>About Me</h2>
-          <div style={{ width: '450px', height: '3px', backgroundColor: 'black' }}></div>
-          <img width={'300px'} className='fluid mt-5 ms-5' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUW6DyWPI5VTH1qtbszj8wsV03lEVwZxk1Jw&usqp=CAU" alt="" />
-          <p className='mt-4 ms-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quis mollitia asperiores quibusdam excepturi repellat nisi atque sit praesentium ex eligendi provident exercitationem vero, maxime veritatis. Eaque, quo! Quaerat, tempora.</p>
-          <div style={{ width: '450px', height: '3px', backgroundColor: 'black' }}></div>
-          <h2 className='text-center mt-3 ms-5 fw-bold'>Catagories</h2>
-          <div style={{ width: '450px', height: '3px', backgroundColor: 'black' }}></div>
-          <ul style={{ width: '30px' }} className='d-flex mt-5'>
-            <li style={{ textDecoration: 'none' }} className='m-2 fw-bolder'>food</li>
-          </ul>
-          <div style={{ width: '450px', height: '3px', backgroundColor: 'black' }}></div>
-          <h2 className='text-center mt-3 ms-5 fw-bold'>FOLLOW ME</h2>
-          <div style={{ width: '450px', height: '3px', backgroundColor: 'black' }}></div>
-          <div className='d-flex flex-row mt-5 justify-content-around alighn-items-center'>
-            <i style={{ fontSize: '30px' }} className="fa-brands fa-facebook-f"></i>
-            <i style={{ fontSize: '30px' }} className="fa-brands fa-twitter"></i>
-            <i style={{ fontSize: '30px' }} className="fa-brands fa-instagram"></i>
-          </div> */}

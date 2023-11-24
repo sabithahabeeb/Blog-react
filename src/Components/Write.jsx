@@ -14,15 +14,19 @@ function Write() {
 <button onClick={handleShow} className='btn btn-success'>ADD </button>  
 <Modal style={{width:''}} show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>ADD BLOG</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
+          <label>
+              <input type="file" style={{ display: 'none' }} o />
+              <img className='img-fluid' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s" alt="" />
+            </label>
+            <Form.Group className="mb-3 mt-3" controlId="exampleForm.ControlInput1">
+              
               <Form.Control
-                type="email"
-                placeholder="name@example.com"
+                type="text"
+                placeholder="Enter Title"
                 autoFocus
               />
             </Form.Group>
@@ -30,17 +34,25 @@ function Write() {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Example textarea</Form.Label>
+              <Form.Label>Overview</Form.Label>
               <Form.Control as="textarea" rows={3} />
+            </Form.Group>
+            <Form.Group className="mb-3 mt-3" controlId="exampleForm.ControlInput1">
+              
+              <Form.Control
+                type="text"
+                placeholder="Enter Category"
+                autoFocus
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Cancel
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+           Add
           </Button>
         </Modal.Footer>
       </Modal>
