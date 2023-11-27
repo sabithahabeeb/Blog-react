@@ -11,3 +11,9 @@ export const registerAPI = async (user)=>{
 export const loginAPI = async(user)=>{
     return await commonAPI("POST",`${BASE_URL}/user/login`,user,"")
 }
+
+// add blogs
+export const addBlogAPI = async(reqBody,reqHeader)=>{
+    return await commonAPI("POST",`${BASE_URL}/blog/add`,reqBody,reqHeader)
+
+}
