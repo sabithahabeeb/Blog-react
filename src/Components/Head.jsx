@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -8,11 +8,16 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Head() {
+  const [username,setUsername] = useState("")
   const navigateURL = useNavigate()
   const navigate = ()=>{
     navigateURL('/myaccount')
   }
- 
+ useEffect(()=>{
+if(sessionStorage.getItem("existingUser")){
+setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
+}
+ },[])
   return (
     <>
         <Navbar  expand="lg" className="bg-body-tertiary  ">
@@ -31,7 +36,7 @@ function Head() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/">HOME</Nav.Link>
+            <Nav.Link href="/dashboard">HOME</Nav.Link>
             {/* <Nav.Link  href="/write">ABOUT</Nav.Link>
             
             <Nav.Link href="#" >
@@ -48,7 +53,7 @@ function Head() {
                 height="40"
                 className="d-inline-block align-top"
               />{' '}
-            <Nav.Link href="#action2" style={{margin:'20px'}}>NAME</Nav.Link>
+            <Nav.Link className='fw-bold text-warning' href="#action2" style={{margin:'20px',fontSize:'20px'}}>{username}</Nav.Link>
          </div>
 
           <Nav.Link href="#action2">LOGOUT</Nav.Link>
