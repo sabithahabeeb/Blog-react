@@ -41,8 +41,8 @@ setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
             
             <Nav.Link href="#" >
             CONTACT
-            </Nav.Link>
-            <Nav.Link  href="">WRITE</Nav.Link> */}
+            </Nav.Link> */}
+            <Nav.Link  href="/write">WRITE</Nav.Link>
 
           </Nav>
          <div onClick={navigate} className='d-flex flex-row justify-content-center'>

@@ -59,7 +59,7 @@ function MyAccount() {
           </div>
         </Col>
         <Col></Col>
-        <Col lg={4} className='ms-5 mt-5 '>
+        {/* <Col lg={4} className='ms-5 mt-5 '>
          <h1>Add Youre Blog</h1>
          <Write/>
 <div className='card shadow p-3 m-3'>
@@ -103,7 +103,7 @@ function MyAccount() {
            </table>
       
 </div>
-        </Col>
+        </Col> */}
       </Row>
     </>
   )

@@ -6,6 +6,9 @@ import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addBlogAPI } from '../Services/allAPI';
+import Head from './Head';
+import Footer from './Footer';
+import { Col, Row } from 'react-bootstrap';
 
 function Write() {
   const [token, setToken] = useState("")
@@ -59,20 +62,75 @@ function Write() {
         const result = await addBlogAPI(reqBody, reqHeader)
         if (result.status === 200) {
           console.log(result.data);
+          handleClose()
+          alert("blog added")
+
         } else {
-          console.log(result.response.data);
+          alert(result.response.data);
           console.log(result);
         }
       }
 
 
-     
+
     }
 
   }
   return (
     <>
-      <button onClick={handleShow} className='btn btn-success'>ADD </button>
+      <Head />
+
+      <div className='d-flex flex-column justify-content-center alighn-items-center w-100 p-5'>
+        <h1 className='fw-bold ms-3'>Add Youre Blog</h1>
+        <button onClick={handleShow} className='btn btn-success w-25'>ADD </button>
+      </div>
+      <Row>
+        <Col lg={10} className='ms-5 mt-5 '>
+          {/* <Write/> */}
+          <div className='card shadow p-3 m-3'>
+
+            <h2 className='m-5'>MY BLOGs</h2>
+            <table className=' '>
+              <thead>
+                <tr>
+                  <th className='p-3'>#</th>
+                  <th className='p-3'>Title</th>
+                  <th className='p-3'>image</th>
+                  <th className='p-3'>edit</th>
+                  <th className='p-3'>Delete</th>
+                </tr>
+
+              </thead>
+              <tbody>
+                <tr>
+                  <td className='p-3'>1</td>
+                  <td className='p-3'>dsfd</td>
+                  <td className='p-3'><img width={'100px'} height={'100px'} className='img-fluid' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s" alt="" /></td>
+                  <td className='p-3'><button className="btn"><i className="fa-solid fa-pen-to-square "></i></button></td>
+                  <td className='p-3'><button className='btn'><i className="fa-solid fa-trash text-danger"></i></button></td>
+                </tr>
+                <tr>
+                  <td className='p-3'>1</td>
+                  <td className='p-3'>dsfd</td>
+                  <td className='p-3'><img width={'100px'} height={'100px'} className='img-fluid' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s" alt="" /></td>
+                  <td className='p-3'><button className="btn"><i className="fa-solid fa-pen-to-square "></i></button></td>
+                  <td className='p-3'><button className='btn'><i className="fa-solid fa-trash text-danger"></i></button></td>
+                </tr>
+                <tr>
+                  <td className='p-3'>1</td>
+                  <td className='p-3'>dsfd</td>
+                  <td className='p-3'><img width={'100px'} height={'100px'} className='img-fluid' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s" alt="" /></td>
+                  <td className='p-3'><button className="btn"><i className="fa-solid fa-pen-to-square "></i></button></td>
+                  <td className='p-3'><button className='btn'><i className="fa-solid fa-trash text-danger"></i></button></td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+        </Col>
+      </Row>
+
       <Modal style={{ width: '' }} show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>ADD BLOG</Modal.Title>
@@ -119,6 +177,7 @@ function Write() {
       </Modal>
       <ToastContainer position="top-right"
         autoClose={1000} theme="colored" />
+      <Footer />
     </>
   )
 }
