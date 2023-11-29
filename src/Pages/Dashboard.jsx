@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Head from '../Components/Head';
 import Footer from '../Components/Footer';
 import BlogCard from '../Components/BlogCard';
 import { Row, Col } from 'react-bootstrap'
 import { allBlogAPI } from '../Services/allAPI';
+import { shareBLogDetailsContext } from '../Context/ContextShare';
 
 function Dashboard() {
+  const {blogDetails,setBlogDetails} = useContext(shareBLogDetailsContext)
   const [allBlogs, setAllBlogs] = useState([])
   const getAllBlogs = async () => {
     if (sessionStorage.getItem("token")) {
@@ -16,6 +18,7 @@ function Dashboard() {
       const result = await allBlogAPI(reqHeader)
       if (result.status === 200) {
         setAllBlogs(result.data)
+        setBlogDetails(result.data)
       } else {
         console.log(result);
       }
@@ -23,6 +26,8 @@ function Dashboard() {
     }
 
   }
+  
+  // console.log(blogDetails);
   // console.log(allBlogs);
   useEffect(() => {
     getAllBlogs()

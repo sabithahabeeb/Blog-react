@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
 import './bootstrap.min.css'
+import ContextShare from './Context/ContextShare';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  <BrowserRouter>
     <React.StrictMode>
+     <ContextShare> 
       <App />
+      </ContextShare>
     </React.StrictMode>
  </BrowserRouter>
 );

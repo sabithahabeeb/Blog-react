@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Head from '../Components/Head'
 import Footer from '../Components/Footer'
 import { Col, Row } from 'react-bootstrap'
+import { shareBLogDetailsContext } from '../Context/ContextShare'
+import { useParams } from 'react-router-dom'
 
 function DetailsBlog() {
+    const {blogDetails,setBlogDetails} = useContext(shareBLogDetailsContext)
+    const [blogDetailsID,setBlogDetailsID] = useState({})
+    const {_id} = useParams()
+    console.log(blogDetails);
+    useEffect(()=>{
+        // const selectedBlog = blogDetails?.find(blog=>blog._id==_id)
+        // setBlogDetailsID(selectedBlog)
+
+    },[])
     return (
         <>
             <Head />

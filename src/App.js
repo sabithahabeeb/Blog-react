@@ -19,7 +19,7 @@ function App() {
         <Route path='/register' element={<Auth register />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/myaccount' element={<MyAccount />} />
-        <Route path='/blogdetails/id' element={<DetailsBlog/>} />
+        <Route path='/blogdetails/:id' element={<DetailsBlog/>} />
         <Route path='/write' element={<Write/>} />
 
            </Routes>
