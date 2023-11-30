@@ -5,12 +5,17 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addBlogAPI } from '../Services/allAPI';
+import { addBlogAPI, userBLogAPI } from '../Services/allAPI';
 import Head from './Head';
 import Footer from './Footer';
 import { Col, Row } from 'react-bootstrap';
+import { BASE_URL } from '../Services/baseurl';
+import Edit from './Edit';
+
+
 
 function Write() {
+  const [userBlogs, setUserBlogs] = useState([])
   const [token, setToken] = useState("")
   const [blogDetails, setBlogDetails] = useState({
     title: "", overview: "", category: "", blogImage: ""
@@ -63,10 +68,10 @@ function Write() {
         if (result.status === 200) {
           console.log(result.data);
           handleClose()
-          alert("blog added")
+          toast.success("blog added")
 
         } else {
-          alert(result.response.data);
+          toast.warning(result.response.data);
           console.log(result);
         }
       }
@@ -76,6 +81,27 @@ function Write() {
     }
 
   }
+
+  const getUserBlogs = async () => {
+
+    if (sessionStorage.getItem("token")) {
+      const token = sessionStorage.getItem("token")
+      const reqHeader = {
+        "Content-Type": "application/json", "Authorization": `Bearer ${token}`
+      }
+      const result = await userBLogAPI(reqHeader)
+      if (result.status === 200) {
+        setUserBlogs(result.data)
+      } else {
+        console.log(result);
+        toast.warning(result.response.data)
+      }
+    }
+  }
+  useEffect(()=>{
+    
+getUserBlogs()
+  },[handleADD])
   return (
     <>
       <Head />
@@ -102,27 +128,18 @@ function Write() {
 
               </thead>
               <tbody>
-                <tr>
-                  <td className='p-3'>1</td>
-                  <td className='p-3'>dsfd</td>
-                  <td className='p-3'><img width={'100px'} height={'100px'} className='img-fluid' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s" alt="" /></td>
-                  <td className='p-3'><button className="btn"><i className="fa-solid fa-pen-to-square "></i></button></td>
+               {userBlogs?.length>0? userBlogs.map((userBlog,index)=>(
+                <tr className='shadow'>
+                  <td className='p-3'>{index+1}</td>
+                  <td className='p-3'>{userBlog.title}</td>
+                  <td className='p-3'><img width={'100px'} height={'100px'} className='img-fluid' src={userBlog?`${BASE_URL}/uploads/${userBlog.blogImage}`:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s"}
+                   alt="" /></td>
+                 <Edit userBlog={userBlog}/>
                   <td className='p-3'><button className='btn'><i className="fa-solid fa-trash text-danger"></i></button></td>
                 </tr>
-                <tr>
-                  <td className='p-3'>1</td>
-                  <td className='p-3'>dsfd</td>
-                  <td className='p-3'><img width={'100px'} height={'100px'} className='img-fluid' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s" alt="" /></td>
-                  <td className='p-3'><button className="btn"><i className="fa-solid fa-pen-to-square "></i></button></td>
-                  <td className='p-3'><button className='btn'><i className="fa-solid fa-trash text-danger"></i></button></td>
-                </tr>
-                <tr>
-                  <td className='p-3'>1</td>
-                  <td className='p-3'>dsfd</td>
-                  <td className='p-3'><img width={'100px'} height={'100px'} className='img-fluid' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s" alt="" /></td>
-                  <td className='p-3'><button className="btn"><i className="fa-solid fa-pen-to-square "></i></button></td>
-                  <td className='p-3'><button className='btn'><i className="fa-solid fa-trash text-danger"></i></button></td>
-                </tr>
+               )) : null
+               }
+
               </tbody>
 
             </table>
@@ -178,6 +195,8 @@ function Write() {
       <ToastContainer position="top-right"
         autoClose={1000} theme="colored" />
       <Footer />
+      <ToastContainer position="top-right"
+        autoClose={1000} theme="colored" />
     </>
   )
 }

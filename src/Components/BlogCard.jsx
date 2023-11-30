@@ -18,7 +18,7 @@ function BlogCard({blog}) {
     <>
     
       <Link to={`/blogdetails/${blog._id}`} style={{textDecoration:'none'}}>
-              <Card style={{ width: '20rem',height:'350px'}} className='shabow mb-5  m-5 btn'>
+              <Card style={{ width: '20rem',height:'350px'}} className='shadow mb-5  m-5 btn'>
            <Card.Img variant="top" height={'300px'} src={blog?`${BASE_URL}/uploads/${blog.blogImage}`:null} />
             <Card.Body>
               <Card.Title>{blog.title}</Card.Title>

@@ -7,6 +7,7 @@ import { allBlogAPI } from '../Services/allAPI';
 import { shareBLogDetailsContext } from '../Context/ContextShare';
 
 function Dashboard() {
+  
   const {blogDetails,setBlogDetails} = useContext(shareBLogDetailsContext)
   const [allBlogs, setAllBlogs] = useState([])
   const getAllBlogs = async () => {
@@ -36,6 +37,7 @@ function Dashboard() {
     <>
       <Head />
       <div className='image mb-5 '></div>
+      <button className='btn btn-success'>Tech</button>
       <Row className='d-flex flex-row mb-3'>
        {allBlogs?.length>0?allBlogs?.map(blog=>(
         <Col sm={12} md={6} lg={4} xl={3} >
