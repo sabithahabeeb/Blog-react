@@ -113,10 +113,10 @@ getUserBlogs()
       <Row>
         <Col lg={10} className='ms-5 mt-5 '>
           {/* <Write/> */}
-          <div className='card shadow p-3 m-3'>
+          <div className='card shadow p-3 m-3 ms-5'>
 
             <h2 className='m-5'>MY BLOGs</h2>
-            <table className=' '>
+            <table className=''>
               <thead>
                 <tr>
                   <th className='p-3'>#</th>
@@ -129,7 +129,7 @@ getUserBlogs()
               </thead>
               <tbody>
                {userBlogs?.length>0? userBlogs.map((userBlog,index)=>(
-                <tr className='shadow'>
+                <tr className='shadow '>
                   <td className='p-3'>{index+1}</td>
                   <td className='p-3'>{userBlog.title}</td>
                   <td className='p-3'><img width={'100px'} height={'100px'} className='img-fluid' src={userBlog?`${BASE_URL}/uploads/${userBlog.blogImage}`:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s"}

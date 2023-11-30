@@ -9,6 +9,7 @@ function DetailsBlog() {
     const {blogDetails,setBlogDetails} = useContext(shareBLogDetailsContext)
     const [blogDetailsID,setBlogDetailsID] = useState({})
     const {_id} = useParams()
+    console.log(useParams);
     console.log(blogDetails);
     useEffect(()=>{
         // const selectedBlog = blogDetails?.find(blog=>blog._id==_id)

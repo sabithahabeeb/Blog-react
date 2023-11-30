@@ -29,3 +29,8 @@ export const allBlogAPI = async (reqHeader)=>{
 export const userBLogAPI = async(reqHeader)=>{
     return await commonAPI("GET",`${BASE_URL}/user/all-blogs`,"",reqHeader)
 }
+
+// edit blogs
+export const editBlogAPI = async(blogId,reqBody,reqHeader)=>{
+    return await commonAPI("PUT",`${BASE_URL}/blogs/edit/${blogId}`,reqBody,reqHeader)
+}
