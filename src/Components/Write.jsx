@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addBlogAPI, userBLogAPI } from '../Services/allAPI';
+import { addBlogAPI, deleteblogAPI, userBLogAPI } from '../Services/allAPI';
 import Head from './Head';
 import Footer from './Footer';
 import { Col, Row } from 'react-bootstrap';
@@ -102,6 +102,21 @@ function Write() {
     
 getUserBlogs()
   },[handleADD])
+
+  const handleDelete = async (id)=>{
+    const token = sessionStorage.getItem("token")
+    const reqHeader = {
+      "Content-Type": "application/json", "Authorization": `Bearer ${token}`
+    }
+    // api call
+    const result = await deleteblogAPI(id,reqHeader)
+    if(result.status===200){
+      getUserBlogs()
+    }else{
+      console.log(result);
+      toast.error(result.response.data)
+    }
+  }
   return (
     <>
       <Head />
@@ -135,7 +150,7 @@ getUserBlogs()
                   <td className='p-3'><img width={'100px'} height={'100px'} className='img-fluid' src={userBlog?`${BASE_URL}/uploads/${userBlog.blogImage}`:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s"}
                    alt="" /></td>
                  <Edit userBlog={userBlog}/>
-                  <td className='p-3'><button className='btn'><i className="fa-solid fa-trash text-danger"></i></button></td>
+                  <td className='p-3'><button onClick={()=>handleDelete(userBlog._id)} className='btn'><i className="fa-solid fa-trash text-danger"></i></button></td>
                 </tr>
                )) : null
                }

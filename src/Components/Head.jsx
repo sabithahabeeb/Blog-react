@@ -8,6 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Head() {
+ 
   const [username,setUsername] = useState("")
   const navigateURL = useNavigate()
   const navigate = ()=>{
@@ -16,8 +17,15 @@ function Head() {
  useEffect(()=>{
 if(sessionStorage.getItem("existingUser")){
 setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
+
 }
  },[])
+
+ const handleLogout = ()=>{
+  sessionStorage.removeItem("existingUser")
+  sessionStorage.removeItem("token")
+  navigateURL('/')
+ }
   return (
     <>
         <Navbar  expand="lg" className="bg-body-tertiary  ">
@@ -56,8 +64,8 @@ setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
             <Nav.Link className='fw-bold text-warning' href="#action2" style={{margin:'20px',fontSize:'20px'}}>{username}</Nav.Link>
          </div>
 
-          <Nav.Link href="#action2">LOGOUT</Nav.Link>
-          
+          {/* <Nav.Link href="#action2">LOGOUT</Nav.Link> */}
+          <button onClick={handleLogout} style={{textDecoration:'none',color:'orange'}} className='btn btn-link fw-bolder fs-5'>LOGOUT</button>
 
         </Navbar.Collapse>
       </Container>

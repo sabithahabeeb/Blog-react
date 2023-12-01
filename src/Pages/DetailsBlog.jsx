@@ -4,18 +4,38 @@ import Footer from '../Components/Footer'
 import { Col, Row } from 'react-bootstrap'
 import { shareBLogDetailsContext } from '../Context/ContextShare'
 import { useParams } from 'react-router-dom'
+import { viewBlogAPI } from '../Services/allAPI'
 
 function DetailsBlog() {
-    const {blogDetails,setBlogDetails} = useContext(shareBLogDetailsContext)
-    const [blogDetailsID,setBlogDetailsID] = useState({})
-    const {_id} = useParams()
-    console.log(useParams);
-    console.log(blogDetails);
+    // const {blogDetails,setBlogDetails} = useContext(shareBLogDetailsContext)
+    const [blogDetailsID,setBlogDetailsID] = useState([])
+    const {id} = useParams()
+    
+   
     useEffect(()=>{
         // const selectedBlog = blogDetails?.find(blog=>blog._id==_id)
         // setBlogDetailsID(selectedBlog)
 
     },[])
+
+    const getABlog = async (id)=>{
+        const token = sessionStorage.getItem("token")
+        const reqHeader = {
+          "Content-Type": "application/json", "Authorization": `Bearer ${token}`
+        }
+        // api call
+        const result = await viewBlogAPI(id,reqHeader)
+        if(result.status===200){
+         setBlogDetailsID(result.data)
+        }else{
+        //   console.log(result);
+        //   toast.error(result.response.data)
+        }
+      }
+      console.log(blogDetailsID);
+      useEffect(()=>{
+        getABlog()
+      },[])
     return (
         <>
             <Head />

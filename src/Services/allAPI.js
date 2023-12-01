@@ -34,3 +34,13 @@ export const userBLogAPI = async(reqHeader)=>{
 export const editBlogAPI = async(blogId,reqBody,reqHeader)=>{
     return await commonAPI("PUT",`${BASE_URL}/blogs/edit/${blogId}`,reqBody,reqHeader)
 }
+
+// delete blog
+export const deleteblogAPI = async(blogId,reqHeader)=>{
+    return await commonAPI("DELETE",`${BASE_URL}/blog/remove/${blogId}`,{},reqHeader)
+}
+
+// viewblog
+export const viewBlogAPI = async(blogId,reqHeader)=>{
+    return await commonAPI("GET",`${BASE_URL}/blogs/view/${blogId}`,"",reqHeader)
+}
