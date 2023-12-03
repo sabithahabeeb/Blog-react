@@ -40,7 +40,9 @@ export const deleteblogAPI = async(blogId,reqHeader)=>{
     return await commonAPI("DELETE",`${BASE_URL}/blog/remove/${blogId}`,{},reqHeader)
 }
 
-// viewblog
-export const viewBlogAPI = async(blogId,reqHeader)=>{
-    return await commonAPI("GET",`${BASE_URL}/blogs/view/${blogId}`,"",reqHeader)
+
+
+// edit user
+export const editUserAPI = async(reqBody,reqHeader)=>{
+    return await commonAPI("PUT",`${BASE_URL}/user/update`,reqBody,reqHeader)
 }

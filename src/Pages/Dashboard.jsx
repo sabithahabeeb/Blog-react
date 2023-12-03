@@ -29,7 +29,7 @@ function Dashboard() {
   }
   
   // console.log(blogDetails);
-  // console.log(allBlogs);
+  console.log(allBlogs);
   useEffect(() => {
     getAllBlogs()
   }, [])
@@ -37,7 +37,10 @@ function Dashboard() {
     <>
       <Head />
       <div className='image mb-5 '></div>
-      <button className='btn btn-success'>Tech</button>
+      <div className="d-flex justify-content-center align-items-center border w-50 rounded ms-5">
+          <input  type="text" className='form-control' placeholder='Search blog by category' />
+          <i style={{ marginRight: '40px' }} class="fa-solid fa-magnifying-glass fa-rotate-90"></i>
+        </div>
       <Row className='d-flex flex-row mb-3'>
        {allBlogs?.length>0?allBlogs?.map(blog=>(
         <Col sm={12} md={6} lg={4} xl={3} >

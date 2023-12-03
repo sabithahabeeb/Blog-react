@@ -119,10 +119,10 @@ getUserBlogs()
   }
   return (
     <>
-      <Head />
+      <Head write/>
 
       <div className='d-flex flex-column justify-content-center alighn-items-center w-100 p-5'>
-        <h1 className='fw-bold ms-3'>Add Youre Blog</h1>
+        <h1 className='fw-bold ms-3 mt-5'>Add Youre Blog</h1>
         <button onClick={handleShow} className='btn btn-success w-25'>ADD </button>
       </div>
       <Row>
@@ -144,7 +144,7 @@ getUserBlogs()
               </thead>
               <tbody>
                {userBlogs?.length>0? userBlogs.map((userBlog,index)=>(
-                <tr className='shadow '>
+                <tr className='list shadow '>
                   <td className='p-3'>{index+1}</td>
                   <td className='p-3'>{userBlog.title}</td>
                   <td className='p-3'><img width={'100px'} height={'100px'} className='img-fluid' src={userBlog?`${BASE_URL}/uploads/${userBlog.blogImage}`:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s"}

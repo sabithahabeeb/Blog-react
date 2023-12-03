@@ -7,9 +7,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, useNavigate } from 'react-router-dom';
 
-function Head({ account }) {
+function Head({ account,write }) {
 
   const [username, setUsername] = useState("")
+  const [userimage, setUserImage] = useState("")
+  const [preview, setPreview] = useState("")
   const navigateURL = useNavigate()
   const navigate = () => {
     navigateURL('/myaccount')
@@ -17,9 +19,13 @@ function Head({ account }) {
   useEffect(() => {
     if (sessionStorage.getItem("existingUser")) {
       setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
-
+      setUserImage(JSON.parse(sessionStorage.getItem("existingUser")).profile)
+     console.log(userimage);
+        
+      
     }
   }, [])
+
 
   const handleLogout = () => {
     sessionStorage.removeItem("existingUser")
@@ -28,7 +34,7 @@ function Head({ account }) {
   }
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary  ">
+      <Navbar style={{zIndex:'1'}} expand="lg" className="bg-body-tertiary position-fixed w-100 ">
         <Container fluid>
           <img
             alt=""
@@ -50,17 +56,17 @@ function Head({ account }) {
             <Nav.Link href="#" >
             CONTACT
             </Nav.Link> */}
-            <Nav.Link href="/write">WRITE</Nav.Link>
+            {!write && <Nav.Link href="/write">WRITE</Nav.Link>}
 
           </Nav>
           {!account && <div onClick={navigate} className='d-flex flex-row justify-content-center'>
-            <img
+            {/* <img
               alt=""
-              src="https://cdn.icon-icons.com/icons2/1571/PNG/512/483490-blogger-google-logo-media-network-social_107708.png"
+              src={preview?preview:`https://cdn.icon-icons.com/icons2/1571/PNG/512/483490-blogger-google-logo-media-network-social_107708.png`}
               width="40"
               height="40"
               className="d-inline-block align-top"
-            />{' '}
+            />{' '} */}
             <Nav.Link className='fw-bold text-warning' href="#action2" style={{ margin: '20px', fontSize: '20px' }}>{username}</Nav.Link>
           </div>}
 

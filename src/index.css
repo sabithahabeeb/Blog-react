@@ -5,16 +5,16 @@
   box-sizing: border-box;
   /* overflow-x: hidden; */
 }
-.container{
+.containers{
   width: 100%;
-  height: 100vh;
-  background-image: url('https://images.unsplash.com/photo-1560258018-c7db7645254e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjE4MjY3M30');
+  height: 50vh;
+  background-image: url('https://st4.depositphotos.com/1484771/37835/i/450/depositphotos_378355986-stock-photo-modern-header-hero-image-banner.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
  
 }
-.container img{
+.containers img{
   width: 100%;
   height: 100vh;
 
@@ -64,4 +64,21 @@ background: rgb(187, 134, 134);
   background-size: cover;
   background-position: center;
   
+}
+
+.list{
+  transition: transform 500ms;
+
+}
+.list:hover{
+  transform: scale(1.06);
+  
+}
+
+.cards{
+  transition: transform 500ms;
+}
+
+.cards:hover{
+  transform: scale(1.06);
 }

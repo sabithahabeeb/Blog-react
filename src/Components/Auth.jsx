@@ -83,9 +83,7 @@ function Auth({ register }) {
                     <Form.Group className="mb-3">
                         <Form.Control type='password' placeholder="Password" value={userData.password} onChange={e => setUSerData({ ...userData, password: e.target.value })} />
                     </Form.Group>
-                    {/* {isRegister && <Form.Group className="mb-3">
-                        <Form.Control type='password' placeholder="Re Enter Password" />
-                    </Form.Group>} */}
+                    
                     {isRegister ? <div>
                         <button onClick={handleRegister} className='btn btn-light mb-3 '>Register</button>
                         <p>Already have Account? Click here to <Link to={'/login'}>Login</Link></p>
