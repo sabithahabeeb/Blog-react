@@ -6,7 +6,7 @@ function Home() {
    <>
       <div className='containers'>
         <div className='buttons'>
-          <h1 >BLOGs</h1>
+          <h1 >WELCOME</h1>
           <Link to={'/login'} className='btn btn-warning'>Get Start</Link>
         </div>
       

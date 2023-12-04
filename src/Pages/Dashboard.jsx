@@ -29,7 +29,7 @@ function Dashboard() {
   }
   
   // console.log(blogDetails);
-  console.log(allBlogs);
+  // console.log(allBlogs);
   useEffect(() => {
     getAllBlogs()
   }, [])

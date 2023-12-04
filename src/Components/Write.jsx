@@ -110,7 +110,9 @@ getUserBlogs()
     }
     // api call
     const result = await deleteblogAPI(id,reqHeader)
+    console.log(result);
     if(result.status===200){
+      toast.success(`Blog Deleted`)
       getUserBlogs()
     }else{
       console.log(result);

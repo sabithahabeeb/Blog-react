@@ -38,10 +38,10 @@ function BlogCard({blog}) {
               <Card onClick={() => handleShow(true)}  style={{ width: '20rem',height:'350px'}} className='cards shadow mb-5  m-5 btn'>
            <Card.Img variant="top" height={'300px'} src={blog?`${BASE_URL}/uploads/${blog.blogImage}`:null} />
             <Card.Body>
-              <Card.Title style={{color:'green'}}>{blog.title}</Card.Title>
-              <p style={{color:'gray'}}>{date()}</p>
-              <Card.Text>
-                {blog?.overview.slice(0,45)}...
+              <Card.Title style={{color:'green',fontWeight:'bolder'}}>{blog.title}</Card.Title>
+              {/* <p style={{color:'gray'}}>{date()}</p> */}
+              <Card.Text className='pt-4' style={{ color:'crimson',textAlign:'start',fontWeight:'bold'}}>
+                {blog?.overview.slice(0,45)}.....
               </Card.Text>
               {/* <Link to={'/blogdetails'}>View</Link> */}
             </Card.Body>
@@ -53,14 +53,15 @@ function BlogCard({blog}) {
           
         </Modal.Header>
         <Modal.Body className='shdow'> <Row className='d-flex flex-row justify-content-center align-items-center'>
-                <Col lg={7} className='mt-5 ms-5 me-5 pe-4 shadow mt-3 p-4'>
-                    <img width={'80%'} height={'400px'} src={blog?`${BASE_URL}/uploads/${blog.blogImage}`:null} alt="" />
+                <Col lg={7} className='  shadow  p-5'>
+                    <img width={'100%'} height={'400px'} src={blog?`${BASE_URL}/uploads/${blog.blogImage}`:null} alt="" />
                     <h1 style={{ width: '900px',color:'green' }} className='fw-bold text-center mt-5 ms-10'>{blog.title}</h1>
-                    <div style={{ color: 'gray', width: '900px' ,color:'red'}} className='d-flex flex-row justify-content-around alighn-items-between  mt-4'>
-                        <p>Author : {username}</p>
-                        <p>{date()}</p>
+                    <div style={{ color: 'gray', width: '900px' ,color:'blue'}} className='  mt-4'>
+                        {/* <p>Author : {username}</p>
+                        <p>{date()}</p> */}
+                        <p style={{fontSize:'25px',fontWeight:'600'}}>Category : {blog?.category}</p>
                     </div>
-                    <div style={{ width: '700px' ,color:''}} className='mt-4'>
+                    <div style={{ width: '700px' ,color:'crimson',textAlign:'start',fontWeight:'bold'}} className='mt-4'>
                         {blog.overview}
                     </div>
                 </Col>

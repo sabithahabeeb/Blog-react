@@ -10,19 +10,18 @@ import { Link, useNavigate } from 'react-router-dom';
 function Head({ account,write }) {
 
   const [username, setUsername] = useState("")
-  const [userimage, setUserImage] = useState("")
-  const [preview, setPreview] = useState("")
+  const[userimage,settUserimage] = useState("")
   const navigateURL = useNavigate()
   const navigate = () => {
     navigateURL('/myaccount')
   }
   useEffect(() => {
+  
     if (sessionStorage.getItem("existingUser")) {
       setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
-      setUserImage(JSON.parse(sessionStorage.getItem("existingUser")).profile)
-     console.log(userimage);
-        
       
+      const image= JSON.parse(sessionStorage.getItem('existingUser')).profile
+      // settUserimage(URL.createObjectURL(image))
     }
   }, [])
 
@@ -62,7 +61,7 @@ function Head({ account,write }) {
           {!account && <div onClick={navigate} className='d-flex flex-row justify-content-center'>
             {/* <img
               alt=""
-              src={preview?preview:`https://cdn.icon-icons.com/icons2/1571/PNG/512/483490-blogger-google-logo-media-network-social_107708.png`}
+              src={userimage}
               width="40"
               height="40"
               className="d-inline-block align-top"

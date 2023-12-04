@@ -91,7 +91,7 @@ function MyAccount() {
             <label>
               <input type="file" style={{ display: 'none' }} onChange={e => setUseProfile({ ...useProfile, profile: e.target.files[0] })} />
               {existingImage !== "" ?
-                <img width={'200px'} className='fluid mt-5 ms-5' src={preview ? preview : `${BASE_URL}/uploads/${existingImage}`} alt="upload profile" /> :
+                <img width={'150px'} className='fluid mt-5 ms-5' src={preview ? preview : `${BASE_URL}/uploads/${existingImage}`} alt="upload profile" /> :
                 <img width={'200px'} className='fluid mt-5 ms-5' src={preview ? preview : `"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJiT-UHSm6w0Jperb8SitpfoAKeMUE3uynPg5YO-2Drw&s"`} alt="upload profile" />}
             </label>
             <Form className='mt-5'>
