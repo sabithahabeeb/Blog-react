@@ -7,6 +7,7 @@ import { allBlogAPI } from '../Services/allAPI';
 import { shareBLogDetailsContext } from '../Context/ContextShare';
 
 function Dashboard() {
+  const [searchKey,setSearchKey] = useState("")
   
   const {blogDetails,setBlogDetails} = useContext(shareBLogDetailsContext)
   const [allBlogs, setAllBlogs] = useState([])
@@ -16,7 +17,7 @@ function Dashboard() {
       const reqHeader = {
         "Content-Type": "application/json", "Authorization": `Bearer ${token}`
       }
-      const result = await allBlogAPI(reqHeader)
+      const result = await allBlogAPI(searchKey,reqHeader)
       if (result.status === 200) {
         setAllBlogs(result.data)
         setBlogDetails(result.data)
@@ -32,13 +33,13 @@ function Dashboard() {
   // console.log(allBlogs);
   useEffect(() => {
     getAllBlogs()
-  }, [])
+  }, [searchKey])
   return (
     <>
       <Head />
       <div className='image mb-5 pt-5'></div>
       <div className="d-flex justify-content-center align-items-center  w-75 rounded ms-5">
-          <input   type="text" className='form-control w-50' placeholder='Search blog by category' />
+          <input   type="text" className='form-control w-50' placeholder='Search blog by category' value={searchKey} onChange={e=>setSearchKey(e.target.value)} />
           <i style={{ marginLeft: '-40px' }} class="fa-solid fa-magnifying-glass fa-rotate-90"></i>
         </div>
       <Row className='d-flex flex-row mb-3 mt-5'>
@@ -46,7 +47,7 @@ function Dashboard() {
         <Col sm={12} md={6} lg={4} xl={3} >
           <BlogCard blog={blog} className='m-5 p-5' />
         </Col>
-       )):null
+       )):<p style={{color:'red'}} className='text-center fw-bold fs-4 '>Not matching Item</p>
         }
 
       </Row>

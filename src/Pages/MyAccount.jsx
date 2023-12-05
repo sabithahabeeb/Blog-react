@@ -6,6 +6,8 @@ import Footer from '../Components/Footer';
 import { BASE_URL } from '../Services/baseurl';
 import { editUserAPI } from '../Services/allAPI';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MyAccount() {
   const navigateURL= useNavigate()
@@ -54,8 +56,9 @@ function MyAccount() {
         const result = await editUserAPI(reqBody,reqHeader)
         if(result.status===200){
           sessionStorage.setItem("existingUser",JSON.stringify(result.data))
+          toast.success("updated succesfully")
           navigateURL('/dashboard')
-          alert("updated succesfully")
+        
           
         }else{
           console.log(result);
@@ -69,10 +72,10 @@ function MyAccount() {
         if(result.status===200){
           sessionStorage.setItem("existingUser",JSON.stringify(result.data))
           navigateURL('/dashboard')
-          alert("updated succesfully")
+          toast.success("updated succesfully")
         }else{
           console.log(result);
-          console.log(result.response.data);
+          toast.error(result.response.data);
 
         }
       }
@@ -128,6 +131,8 @@ function MyAccount() {
         
       </Row>
       <Footer />
+      <ToastContainer position="top-right"
+                autoClose={1000} theme="colored" />
     </>
   )
 }

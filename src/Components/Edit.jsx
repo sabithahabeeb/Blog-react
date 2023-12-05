@@ -31,7 +31,8 @@ function Edit({ userBlog }) {
 
     }, [blogDetails.blogImage])
 
-    const handleUpdate = async () => {
+    const handleUpdate = async (e) => {
+        e.preventDefault()
         const {id, title, overview, category, blogImage } = blogDetails
         if (!title || !overview || !category) {
             toast.info("Please fill the form completely")
@@ -49,6 +50,7 @@ function Edit({ userBlog }) {
                 //   api call
                 const result = await editBlogAPI(id,reqBody,reqHeader)
                 if(result.status===200){
+                    toast.success("Updation succesfully")
                     handleClose()
                 }else{
                     console.log(result);
@@ -60,6 +62,7 @@ function Edit({ userBlog }) {
                 }
                 const result = await editBlogAPI(id,reqBody,reqHeader)
                 if(result.status===200){
+                    toast.success("Updation succesfully")
                     handleClose()
                 }else{
                     console.log(result);

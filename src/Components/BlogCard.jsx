@@ -39,11 +39,10 @@ function BlogCard({blog}) {
            <Card.Img variant="top" height={'300px'} src={blog?`${BASE_URL}/uploads/${blog.blogImage}`:null} />
             <Card.Body>
               <Card.Title style={{color:'green',fontWeight:'bolder'}}>{blog.title}</Card.Title>
-              {/* <p style={{color:'gray'}}>{date()}</p> */}
-              <Card.Text className='pt-4' style={{ color:'crimson',textAlign:'start',fontWeight:'bold'}}>
+              <p style={{fontSize:'15px',fontWeight:'600',color:'blue'}}>Category : {blog?.category}</p>
+              <Card.Text className='pt-2' style={{ color:'crimson',textAlign:'start',fontWeight:'bold'}}>
                 {blog?.overview.slice(0,45)}.....
               </Card.Text>
-              {/* <Link to={'/blogdetails'}>View</Link> */}
             </Card.Body>
           </Card>
      
