@@ -85,7 +85,7 @@ function MyAccount() {
       <Head account />
       <Row className='d-flex flex-row justify-content-center align-items-center'>
         <Col lg={5} className='mt-5 ms-5 me-5 pe-4'>
-          <h1 style={{ color: 'pink', fontWeight: '400' }} className='mb-5 mt-5'>Update Youre Account</h1>
+          <h1 style={{ color: 'orange', fontWeight: '400' }} className='mb-5 mt-5 fw-bold'>Update Youre Account</h1>
           <div className='d-flex flex-column card shadow w-100 ms-3 p-3' >
             <h3 style={{ fontFamily: 'serif' }} className='mb-3 '>Profile Picture</h3>
             <label>

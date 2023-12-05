@@ -36,12 +36,12 @@ function Dashboard() {
   return (
     <>
       <Head />
-      <div className='image mb-5 '></div>
-      <div className="d-flex justify-content-center align-items-center border w-50 rounded ms-5">
-          <input  type="text" className='form-control' placeholder='Search blog by category' />
-          <i style={{ marginRight: '40px' }} class="fa-solid fa-magnifying-glass fa-rotate-90"></i>
+      <div className='image mb-5 pt-5'></div>
+      <div className="d-flex justify-content-center align-items-center  w-75 rounded ms-5">
+          <input   type="text" className='form-control w-50' placeholder='Search blog by category' />
+          <i style={{ marginLeft: '-40px' }} class="fa-solid fa-magnifying-glass fa-rotate-90"></i>
         </div>
-      <Row className='d-flex flex-row mb-3'>
+      <Row className='d-flex flex-row mb-3 mt-5'>
        {allBlogs?.length>0?allBlogs?.map(blog=>(
         <Col sm={12} md={6} lg={4} xl={3} >
           <BlogCard blog={blog} className='m-5 p-5' />
