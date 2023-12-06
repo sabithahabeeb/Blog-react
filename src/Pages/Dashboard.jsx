@@ -4,9 +4,10 @@ import Footer from '../Components/Footer';
 import BlogCard from '../Components/BlogCard';
 import { Row, Col } from 'react-bootstrap'
 import { allBlogAPI } from '../Services/allAPI';
-import { shareBLogDetailsContext } from '../Context/ContextShare';
+import { shareBLogDetailsContext, shareDarkLightContext } from '../Context/ContextShare';
 
 function Dashboard() {
+  const {isDarkMode, setIsDarkMode} = useContext(shareDarkLightContext)
   const [searchKey,setSearchKey] = useState("")
   
   const {blogDetails,setBlogDetails} = useContext(shareBLogDetailsContext)
@@ -35,7 +36,7 @@ function Dashboard() {
     getAllBlogs()
   }, [searchKey])
   return (
-    <>
+    <div className={isDarkMode?'dark-mode':'light-mode'}>
       <Head />
       <div className='image mb-5 pt-5'></div>
       <div className="d-flex justify-content-center align-items-center  w-75 rounded ms-5">
@@ -52,7 +53,7 @@ function Dashboard() {
 
       </Row>
       <Footer />
-    </>
+    </div>
   )
 }
 

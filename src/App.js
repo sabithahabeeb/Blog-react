@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from './Pages/Dashboard';
 import Home from './Pages/Home';
@@ -17,6 +17,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/myaccount' element={<MyAccount />} />
         <Route path='/write' element={<Write/>} />
+        <Route path='/*' element={<Navigate to={'/'}/>} />
 
            </Routes>
     </>

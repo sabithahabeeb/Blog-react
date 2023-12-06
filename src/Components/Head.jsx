@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -7,21 +7,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../Services/baseurl';
+import { shareDarkLightContext } from '../Context/ContextShare';
 
-function Head({ account,write }) {
+function Head({ account, write }) {
+  const {isDarkMode, setIsDarkMode} = useContext(shareDarkLightContext)
 
   const [username, setUsername] = useState("")
-  const[userimage,settUserimage] = useState("")
+  const [userimage, settUserimage] = useState("")
   const navigateURL = useNavigate()
   const navigate = () => {
     navigateURL('/myaccount')
   }
   useEffect(() => {
-  
+
     if (sessionStorage.getItem("existingUser")) {
       setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
-      
-      const image= JSON.parse(sessionStorage.getItem('existingUser')).profile
+
+      const image = JSON.parse(sessionStorage.getItem('existingUser')).profile
       settUserimage(image)
     }
   }, [])
@@ -32,9 +34,13 @@ function Head({ account,write }) {
     sessionStorage.removeItem("token")
     navigateURL('/')
   }
+
+  const toggleMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
   return (
     <>
-      <Navbar style={{zIndex:'1'}} expand="lg" className="bg-body-tertiary position-fixed w-100 ">
+      <Navbar style={{ zIndex: '1' }} expand="lg" className="bg-body-tertiary position-fixed w-100 ">
         <Container fluid>
           <img
             alt=""
@@ -50,17 +56,15 @@ function Head({ account,write }) {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/dashboard" style={{fontSize:'20px'}} className='fw-bolder text-success me-3 ms-3' >HOME</Nav.Link>
-            {/* <Nav.Link  href="/write">ABOUT</Nav.Link>
-            
-            <Nav.Link href="#" >
-            CONTACT
-            </Nav.Link> */}
-            {!write && <Nav.Link href="/write" style={{fontSize:'20px'}} className='fw-bolder text-success me-3 ms-3'>WRITE</Nav.Link>}
+            <Nav.Link href="/dashboard" style={{ fontSize: '20px' }} className='fw-bolder text-success me-3 ms-3' >HOME</Nav.Link>
+            {!write && <Nav.Link href="/write" style={{ fontSize: '20px' }} className='fw-bolder text-success me-3 ms-3'>WRITE</Nav.Link>}
 
           </Nav>
+          <button style={{border:'none',fontSize:'20px',background:'transperent'}} className='m-2 me-5' onClick={toggleMode}>
+            {isDarkMode ? <i className="fa-solid fa-sun  fa-2xl " style={{ color: 'white' }}></i> : <i className="fa-solid fa-moon  fa-xl " style={{ color: 'black' }}></i>}
+          </button>
           {!account && <div onClick={navigate} className='d-flex flex-row justify-content-center '>
-            <img 
+            <img
               alt=""
               src={`${BASE_URL}/uploads/${userimage}`}
               width="50"
@@ -70,7 +74,6 @@ function Head({ account,write }) {
             <Nav.Link className='fw-bold text-warning' href="#action2" style={{ margin: '20px', fontSize: '25px' }}>{username}</Nav.Link>
           </div>}
 
-          {/* <Nav.Link href="#action2">LOGOUT</Nav.Link> */}
           <button onClick={handleLogout} style={{ textDecoration: 'none', color: 'orange' }} className='btn btn-link fw-bolder fs-5'>LOGOUT</button>
 
 

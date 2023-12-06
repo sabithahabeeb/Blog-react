@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Head from '../Components/Head'
 import Form from 'react-bootstrap/Form';
@@ -8,8 +8,10 @@ import { editUserAPI } from '../Services/allAPI';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { shareDarkLightContext } from '../Context/ContextShare';
 
 function MyAccount() {
+  const {isDarkMode, setIsDarkMode} = useContext(shareDarkLightContext)
   const navigateURL= useNavigate()
   const [open, setOpen] = useState(false);
   const [useProfile, setUseProfile] = useState({
@@ -83,8 +85,9 @@ function MyAccount() {
 
   }
 
+
   return (
-    <>
+    <div className={isDarkMode?'dark-mode':'light-mode'}>
       <Head account />
       <Row className='d-flex flex-row justify-content-center align-items-center'>
         <Col lg={5} className='mt-5 ms-5 me-5 pe-4'>
@@ -133,7 +136,7 @@ function MyAccount() {
       <Footer />
       <ToastContainer position="top-right"
                 autoClose={1000} theme="colored" />
-    </>
+    </div>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -11,10 +11,12 @@ import Footer from './Footer';
 import { Col, Row } from 'react-bootstrap';
 import { BASE_URL } from '../Services/baseurl';
 import Edit from './Edit';
+import { shareDarkLightContext } from '../Context/ContextShare';
 
 
 
 function Write() {
+  const {isDarkMode, setIsDarkMode} = useContext(shareDarkLightContext)
   const [userBlogs, setUserBlogs] = useState([])
   const [token, setToken] = useState("")
   const [blogDetails, setBlogDetails] = useState({
@@ -120,7 +122,7 @@ getUserBlogs()
     }
   }
   return (
-    <>
+    <div className={isDarkMode?'dark-mode':'light-mode'}>
       <Head write/>
 
       <div className='d-flex flex-column justify-content-center alighn-items-center w-100 p-5'>
@@ -129,7 +131,6 @@ getUserBlogs()
       </div>
       <Row>
         <Col lg={10} className='ms-5 mt-5 '>
-          {/* <Write/> */}
           <div className='card shadow p-3 m-3 ms-5'>
 
             <h2 className='m-5'>MY BLOGs</h2>
@@ -214,7 +215,7 @@ getUserBlogs()
       <Footer />
       <ToastContainer position="top-right"
         autoClose={1000} theme="colored" />
-    </>
+    </div>
   )
 }
 
