@@ -191,14 +191,24 @@ getUserBlogs()
               <Form.Label>Overview</Form.Label>
               <Form.Control as="textarea" rows={3} value={blogDetails.overview} onChange={e => setBlogDetails({ ...blogDetails, overview: e.target.value })} />
             </Form.Group>
-            <Form.Group className="mb-3 mt-3" controlId="exampleForm.ControlInput1">
+            <div class="input-group" value={blogDetails.category} onChange={e => setBlogDetails({ ...blogDetails, category: e.target.value })}>
+                <select class="form-select" > 
+                <option disabled value="">Category</option>                
+                  <option value="Game">Game</option>
+                  <option value="Work">Work</option>
+                  <option value="Cooking">Cooking</option>
+                  <option value="Entertinment">Entertinment</option>
+                  <option value="Tech">Tech</option>
+                </select>
+              </div>
+            {/* <Form.Group className="mb-3 mt-3" controlId="exampleForm.ControlInput1">
 
               <Form.Control value={blogDetails.category} onChange={e => setBlogDetails({ ...blogDetails, category: e.target.value })}
                 type="text"
                 placeholder="Enter Category"
                 autoFocus
               />
-            </Form.Group>
+            </Form.Group> */}
           </Form>
         </Modal.Body>
         <Modal.Footer>

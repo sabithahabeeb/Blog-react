@@ -61,7 +61,7 @@ function Head({ account, write }) {
 
           </Nav>
           <button style={{border:'none',fontSize:'20px',background:'transperent'}} className='m-2 me-5' onClick={toggleMode}>
-            {isDarkMode ? <i className="fa-solid fa-sun  fa-2xl " style={{ color: 'white' }}></i> : <i className="fa-solid fa-moon  fa-xl " style={{ color: 'black' }}></i>}
+            {isDarkMode ? <i className="fa-solid fa-sun  fa-2xl " style={{ color: 'yellow' }}></i> : <i className="fa-solid fa-moon  fa-xl " style={{ color: 'black' }}></i>}
           </button>
           {!account && <div onClick={navigate} className='d-flex flex-row justify-content-center '>
             <img

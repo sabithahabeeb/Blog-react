@@ -33,7 +33,7 @@ function Edit({ userBlog }) {
 
     const handleUpdate = async (e) => {
         e.preventDefault()
-        const {id, title, overview, category, blogImage } = blogDetails
+        const { id, title, overview, category, blogImage } = blogDetails
         if (!title || !overview || !category) {
             toast.info("Please fill the form completely")
         } else {
@@ -48,11 +48,11 @@ function Edit({ userBlog }) {
                     "Content-Type": "multipart/form-data", "Authorization": `Bearer ${token}`
                 }
                 //   api call
-                const result = await editBlogAPI(id,reqBody,reqHeader)
-                if(result.status===200){
+                const result = await editBlogAPI(id, reqBody, reqHeader)
+                if (result.status === 200) {
                     toast.success("Updation succesfully")
                     handleClose()
-                }else{
+                } else {
                     console.log(result);
                     toast.error(result.response.data)
                 }
@@ -60,11 +60,11 @@ function Edit({ userBlog }) {
                 const reqHeader = {
                     "Content-Type": "application/json", "Authorization": `Bearer ${token}`
                 }
-                const result = await editBlogAPI(id,reqBody,reqHeader)
-                if(result.status===200){
+                const result = await editBlogAPI(id, reqBody, reqHeader)
+                if (result.status === 200) {
                     toast.success("Updation succesfully")
                     handleClose()
-                }else{
+                } else {
                     console.log(result);
                     toast.warning(result.response.data)
                 }
@@ -103,14 +103,24 @@ function Edit({ userBlog }) {
                             <Form.Label>Overview</Form.Label>
                             <Form.Control as="textarea" rows={3} value={blogDetails.overview} onChange={e => setBlogDetails({ ...blogDetails, overview: e.target.value })} />
                         </Form.Group>
-                        <Form.Group className="mb-3 mt-3" controlId="exampleForm.ControlInput1">
+                        <div class="input-group" value={blogDetails.category} onChange={e => setBlogDetails({ ...blogDetails, category: e.target.value })}>
+                            <select class="form-select" >
+                                <option disabled value="">Category</option>
+                                <option value="Game">Game</option>
+                                <option value="Work">Work</option>
+                                <option value="Cooking">Cooking</option>
+                                <option value="Entertinment">Entertinment</option>
+                                <option value="Tech">Tech</option>
+                            </select>
+                        </div>
+                        {/* <Form.Group className="mb-3 mt-3" controlId="exampleForm.ControlInput1">
 
                             <Form.Control
                                 type="text" value={blogDetails.category} onChange={e => setBlogDetails({ ...blogDetails, category: e.target.value })}
                                 placeholder="Enter Category"
                                 autoFocus
                             />
-                        </Form.Group>
+                        </Form.Group> */}
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
